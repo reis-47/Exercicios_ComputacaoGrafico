@@ -1,0 +1,109 @@
+import matplotlib.pyplot as plt
+import numpy as np
+import math
+
+#Operacoes:
+def operacao_a():
+  potencia_x = pow(input_x, 2)
+  potencia_y = pow(input_y, 2)
+  potencia_z = pow(input_z, 2)
+
+  tamanho_vetor = float(pow((potencia_x + potencia_y + potencia_z), 0.5))
+  print("Tamaho do vetor: ", tamanho_vetor)
+
+def operacao_b():
+  operacao_b_vector= np.array([input_x, input_y, input_z])
+
+  operacao_b_magnitude = np.linalg.norm(operacao_b_vector)
+  operacao_b_normalized = operacao_b_vector / operacao_b_magnitude
+  print("Vetor normalizado: ", operacao_b_normalized)
+
+
+def operacao_c():
+  operacao_c_input_x = float(input("Enter the new X vector: ")) + input_x
+  operacao_c_input_y = float(input("Enter the new Y vector: ")) + input_y
+  operacao_c_input_z = float(input("Enter the new Z vector: ")) + input_z
+  operacao_c_vector = np.array([operacao_c_input_x, operacao_c_input_y, operacao_c_input_z])
+  
+  print("Vetor somando: ", operacao_c_vector)
+
+def operacao_d():
+  operacao_d_input_x = float(input("Enter the new X vector: ")) + input_x
+  operacao_d_input_y = float(input("Enter the new Y vector: ")) + input_y
+  operacao_d_input_z = float(input("Enter the new Z vector: ")) + input_z
+  operacao_d_vector = np.array([operacao_d_input_x, operacao_d_input_y, operacao_d_input_z])
+  
+  print("Vetor subtraido: ", operacao_d_vector)
+
+
+def operacao_e():
+  operacao_e_vetor = np.array([input_x, input_y, input_z])
+  operacao_e_escalar = float(input("digite a escalar para multiplicar: ")) * operacao_e_vetor
+
+  print("Vetor multiplicado: ", operacao_e_escalar)
+
+
+def operacao_f():
+  operacao_f_vetor = np.array([input_x, input_y, input_z])
+  operacao_f_escalar = float(input("\n digite a escalar dividir: ")) / operacao_f_vetor
+
+  print("Vetor dividido: ", operacao_f_escalar)
+
+
+def operacao_g():
+  operacao_g_vetor_original = np.array([input_x, input_y, input_z])
+
+  operacao_g_input_x = float(input("digite o novo X vetor: "))
+  operacao_g_input_y = float(input("digite o novo Y vetor: "))
+  operacao_g_input_z = float(input("digite o novo Z vetor: "))
+
+  operacao_g_vector = np.array([operacao_g_input_x, operacao_g_input_y, operacao_g_input_z])
+  print("Vetor multiplicado: ", operacao_g_vector * operacao_g_vetor_original)
+
+#variaveis
+input_x = float(input("Enter the X vector: "))
+input_y = float(input("Enter the Y vector: "))
+input_z = float(input("Enter the Z vector: "))
+
+
+while True:
+  print("\n lista de operacoes: \n")
+  print("\n 1. Tamanho do vetor")
+  print("\n 2. Vetor normalizado")
+  print("\n 3. Somar vetor previo por um novo")
+  print("\n 4. Subtrair vetor previo por um novo")
+  print("\n 5. Multiplicar o vetor por uma escalar")
+  print("\n 6. Dividir o vetor por uma escalar")
+  print("\n 7. Multiplicar dois vetores, o previo por um novo")
+  print("\n 8. Quit.")
+
+#lista dos if
+  operacao_escolhida = int(input("operacao: "))
+
+
+  if operacao_escolhida == 1:
+    operacao_a()
+  
+  elif operacao_escolhida == 2:
+    operacao_b()
+
+  elif operacao_escolhida == 3:
+    operacao_c()
+
+  elif operacao_escolhida == 4:
+    operacao_d()
+
+  elif operacao_escolhida == 5:
+    operacao_e()
+
+  elif operacao_escolhida == 6:
+    operacao_f()
+
+  elif operacao_escolhida == 7:
+    operacao_g()
+    
+  elif operacao_escolhida == 8:
+      break
+ 
+  else:
+    print("te liga loco.")
