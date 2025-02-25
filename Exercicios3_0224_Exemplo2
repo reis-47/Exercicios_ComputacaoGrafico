@@ -1,0 +1,23 @@
+import matplotlib.pyplot as plt
+import numpy as np
+import math
+
+#variaveis
+matriz_diagonal = np.array([[2, 0, 0], [0, 1, 0], [0, 0, 7]])
+print(matriz_diagonal)
+
+#conferir se eh diagonal
+matriz_diagonal_linha, matriz_diagonal_coluna = matriz_diagonal.shape
+
+if matriz_diagonal_linha != matriz_diagonal_coluna:
+  print("A matriz não eh quadrada, linhas e colunas iguais. \n")
+else:
+  print("A matriz eh quadrada, linhas e colunas iguais. \n")
+
+  i = matriz_diagonal_linha
+  j = matriz_diagonal_coluna
+
+  if i != j and matriz_diagonal_linha[i][j] != 0:
+    print("A matriz não eh diagonal. \n")
+  else:
+    print("A matriz eh diagonal. \n")
