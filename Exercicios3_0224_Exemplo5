@@ -1,0 +1,21 @@
+import matplotlib.pyplot as plt
+import numpy as np
+import math
+
+#variaveis
+matriz_escalar_original = np.array([[2, 3, 8], [6, 0, 4], [1, 5, 7]])
+matriz_escalar = np.array([[1, 0, 0], [0, 1, 0], [0, 0, 1]])
+print(matriz_escalar_original)
+
+escalar = 3
+
+matriz_escalar_original_linha, matriz_escalar_original_coluna = matriz_escalar_original.shape
+
+i_escalar = matriz_escalar_original_linha
+j_escalar = matriz_escalar_original_coluna
+
+for i_escalar in range (matriz_escalar_original_linha):
+  for j_escalar in range (matriz_escalar_original_coluna):
+    matriz_escalar[i_escalar][j_escalar] = matriz_escalar_original[i_escalar][j_escalar] * escalar
+
+print(matriz_escalar)
