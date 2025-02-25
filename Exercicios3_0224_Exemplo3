@@ -1,0 +1,32 @@
+import matplotlib.pyplot as plt
+import numpy as np
+import math
+
+#variaveis
+matriz_identidade = np.array([[1, 0, 0], [0, 1, 0], [0, 0, 1]]) #pra criar uma matriz 3X3 precisa usar colchetes duplos [[numeros], [numeros], [numeros]]
+print(matriz_identidade)
+
+#conferir se eh uma diagonal
+matriz_identidade_linha, matriz_identidade_coluna = matriz_identidade.shape
+
+if matriz_identidade_linha != matriz_identidade_coluna:
+  print("<n A matriz não eh quadrada, linhas e colunas iguais. \n")
+else:
+  print("A matriz eh quadrada, linhas e colunas iguais. \n")
+
+  #conferir se ela eh identidade
+  i_identidade = matriz_identidade_linha
+  j_identidade = matriz_identidade_coluna
+  k = 0
+  confirmar_identidade = 1
+
+  for i_identidade in range (matriz_identidade_linha):
+    for j_identidade in range (matriz_identidade_coluna):
+      for k in range (matriz_identidade_coluna):
+        if (i_identidade == k and matriz_identidade[i_identidade][k] != 1) or (i_identidade != k and matriz_identidade[i_identidade][k] != 0):
+          confirmar_identidade = 0
+
+  if confirmar_identidade == 1:
+    print("A matriz eh identidade. \n")
+  elif confirmar_identidade == 0:
+    print("A matriz não eh identidade. \n")
