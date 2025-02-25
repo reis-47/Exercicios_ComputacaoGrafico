@@ -1,0 +1,37 @@
+#Exemplo 1. Multiplicar duas matrizes "no braco":
+import matplotlib.pyplot as plt
+import numpy as np
+import math
+
+#variaveis
+matriz_a = np.array([[1, 3, 2], [4, 7, 6],])
+print(matriz_a)
+
+matriz_b= np.array([[2, 8], [3, 1], [5, 9]])
+print(matriz_b)
+
+numero_linha = 0
+numero_coluna = 0
+
+#if matriz_a.shape[0] == matriz_b.shape[1]:
+#    print("As matrizes podem ser multiplicadas.")
+#else:
+#    print("As matrizes não podem ser multiplicadas.")
+
+matriz_a_linha, matriz_a_coluna = matriz_a.shape #na funcao np.shape: 0 vale o numero de linhas, 1 o numero de colunas
+matriz_b_linha, matriz_b_coluna = matriz_b.shape
+
+if matriz_a_coluna != matriz_b_linha:
+  print("As matrizes não podem ser multiplicadas.")
+else:
+  print("As matrizes podem ser multiplicadas.")
+  resultado = np.zeros((matriz_a_linha, matriz_b_coluna))
+
+  for numero_linha in range (matriz_a_linha):
+    for numero_coluna in range (matriz_b_coluna):
+      soma = 0
+      for k in range (matriz_a_coluna):
+        soma += matriz_a[numero_linha, k] * matriz_b[k, numero_coluna]
+      resultado[numero_linha, numero_coluna] = soma
+
+print(resultado)
