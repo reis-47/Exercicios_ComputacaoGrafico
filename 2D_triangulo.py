@@ -16,7 +16,7 @@ ez = 1  # Escala no eixo Z (não afeta 2D)
 
 # Função de inicialização do OpenGL
 def init():
-    glClearColor(0, 0, 1, 1)  # Define a cor de fundo azul (R=0, G=0, B=1, A=1)
+    glClearColor(1, 1, 1, 1)  # Define a cor de fundo branco (R=1, G=1, B=1, A=1)
     glClearDepth(1.0)  # Define a profundidade máxima para renderização
     glEnable(GL_DEPTH_TEST)  # Habilita o teste de profundidade para ocultação de objetos
     glDepthFunc(GL_LEQUAL)  # Define o tipo de teste de profundidade
