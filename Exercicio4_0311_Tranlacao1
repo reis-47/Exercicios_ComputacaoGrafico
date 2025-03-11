@@ -1,0 +1,44 @@
+import matplotlib.pyplot as plt
+
+# Função que realiza a translação de um único ponto manualmente
+def translacao_ponto(ponto, vetor_translacao):
+    novo_x = ponto[0] + vetor_translacao[0]
+    novo_y = ponto[1] + vetor_translacao[1]
+    return [novo_x, novo_y]
+
+# Função que recebe dois pontos e realiza a translação em ambos
+def transladar_pontos(ponto1, ponto2, vetor_translacao):
+    ponto1_transladado = translacao_ponto(ponto1, vetor_translacao)
+    ponto2_transladado = translacao_ponto(ponto2, vetor_translacao)
+    return ponto1_transladado, ponto2_transladado
+
+# Pontos originais e vetor de translação
+ponto1_original = [0, 0]
+ponto2_original = [2, 2]
+vetor_translacao = [3, 2]
+
+# Transladando os pontos através da função
+ponto1_transladado, ponto2_transladado = transladar_pontos(ponto1_original, ponto2_original, vetor_translacao)
+
+# Configurando o gráfico
+plt.figure()
+
+# Plotando os pontos originais (em azul) e conectando-os
+plt.plot([ponto1_original[0], ponto2_original[0]], 
+         [ponto1_original[1], ponto2_original[1]], 
+         'bo-', label='Pontos Originais')
+
+# Plotando os pontos transladados (em vermelho) e conectando-os
+plt.plot([ponto1_transladado[0], ponto2_transladado[0]], 
+         [ponto1_transladado[1], ponto2_transladado[1]], 
+         'ro-', label='Pontos Transladados')
+
+# Configurações do gráfico
+plt.xlabel("Eixo X")
+plt.ylabel("Eixo Y")
+plt.title("Translação de Pontos via Função")
+plt.legend()
+plt.grid(True)
+
+# Exibindo o gráfico
+plt.show()
