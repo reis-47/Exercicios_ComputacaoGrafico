@@ -43,7 +43,7 @@ def draw():
     # y → deslocamento no eixo Y (vertical: cima/baixo)
     # -6 → deslocamento no eixo Z (afasta ou aproxima da tela)
 
-    glRotatef(r, 1, 0, 0)  
+    glRotatef(r, 1, 1, 0)  
     # glRotatef(angle, axisX, axisY, axisZ)
     # r → ângulo de rotação em graus
     # 1 → rotaciona no eixo X (gira vertical)
