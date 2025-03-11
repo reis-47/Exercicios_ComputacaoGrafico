@@ -1,0 +1,50 @@
+import matplotlib.pyplot as plt
+
+# Função que realiza a translação de um ponto manualmente
+def translacao_manual(ponto, vetor_translacao):
+    novo_x = ponto[0] + vetor_translacao[0]
+    novo_y = ponto[1] + vetor_translacao[1]
+    return [novo_x, novo_y]
+
+# Função que recebe uma lista de pontos e os transpõe pelo mesmo vetor de translação
+def transladar_pontos(lista_pontos, vetor_translacao):
+    pontos_transladados = []
+    for ponto in lista_pontos:
+        ponto_transladado = translacao_manual(ponto, vetor_translacao)
+        pontos_transladados.append(ponto_transladado)
+    return pontos_transladados
+
+# Definindo os pontos originais
+ponto1_original = [6, 8]
+ponto2_original = [4, 5]
+ponto3_original = [8, 5]
+lista_pontos_originais = [ponto1_original, ponto2_original, ponto3_original]
+
+# Vetor de translação
+vetor_translacao = [3, -4]
+
+# Transladando os pontos usando a função definida
+lista_pontos_transladados = transladar_pontos(lista_pontos_originais, vetor_translacao)
+
+# Configurando o gráfico
+plt.figure()
+
+# Plotando os pontos originais (em azul) conectados
+plt.plot([p[0] for p in lista_pontos_originais],
+         [p[1] for p in lista_pontos_originais],
+         'bo-', label='Pontos Originais')
+
+# Plotando os pontos transladados (em vermelho) conectados
+plt.plot([p[0] for p in lista_pontos_transladados],
+         [p[1] for p in lista_pontos_transladados],
+         'ro-', label='Pontos Transladados')
+
+# Configurações do gráfico
+plt.xlabel("Eixo X")
+plt.ylabel("Eixo Y")
+plt.title("Translação de Pontos via Função")
+plt.legend()
+plt.grid(True)
+
+# Exibindo o gráfico
+plt.show()
