@@ -1,0 +1,51 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Função que realiza a rotação de um ponto em torno da origem
+def rotacionar_ponto(ponto, angulo_radianos):
+    novo_x = ponto[0] * np.cos(angulo_radianos) - ponto[1] * np.sin(angulo_radianos)
+    novo_y = ponto[0] * np.sin(angulo_radianos) + ponto[1] * np.cos(angulo_radianos)
+    return [novo_x, novo_y]
+
+# Função que recebe uma lista de pontos e os rotaciona pelo mesmo ângulo
+def rotacionar_pontos(lista_pontos, angulo_radianos):
+    pontos_rotacionados = []
+    for ponto in lista_pontos:
+        ponto_rotacionado = rotacionar_ponto(ponto, angulo_radianos)
+        pontos_rotacionados.append(ponto_rotacionado)
+    return pontos_rotacionados
+
+# Definição dos pontos originais
+ponto1_original = [2, 2]
+ponto2_original = [4, 4]
+lista_pontos_originais = [ponto1_original, ponto2_original]
+
+# Definição do ângulo de rotação em radianos (45 graus)
+angulo_graus = 45
+angulo_radianos = np.radians(angulo_graus)
+
+# Rotacionando os pontos usando a função definida
+lista_pontos_rotacionados = rotacionar_pontos(lista_pontos_originais, angulo_radianos)
+
+# Configuração do gráfico
+plt.figure()
+
+# Plotando os pontos originais (em azul) conectados
+plt.plot([p[0] for p in lista_pontos_originais],
+         [p[1] for p in lista_pontos_originais],
+         'bo-', label='Pontos Originais')
+
+# Plotando os pontos rotacionados (em vermelho) conectados
+plt.plot([p[0] for p in lista_pontos_rotacionados],
+         [p[1] for p in lista_pontos_rotacionados],
+         'ro-', label='Pontos Rotacionados')
+
+# Configurações do gráfico
+plt.xlabel("Eixo X")
+plt.ylabel("Eixo Y")
+plt.title("Rotação de Pontos via Função")
+plt.legend()
+plt.grid(True)
+
+# Exibindo o gráfico
+plt.show()
