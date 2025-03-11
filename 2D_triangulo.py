@@ -5,8 +5,8 @@ from OpenGL.GLUT import *  # Importa GLUT para utilitários gráficos do OpenGL
 from OpenGL.GLU import *  # Importa GLU para operações gráficas auxiliares
 
 # Variáveis de posição do triângulo
-x = -1.5  # Posição inicial no eixo X
-y = 0  # Posição inicial no eixo Y
+x = 7  # Alterado, Posição inicial no eixo X
+y = 3  # Alterado, Posição inicial no eixo Y
 r = 0  # Ângulo de rotação do triângulo
 
 # Variáveis de escala (tamanho do triângulo)
@@ -58,7 +58,7 @@ def draw():
 
     # Inicia a definição do triângulo
     glBegin(GL_TRIANGLES)
-    glColor3f(1, 1, 0)  # Define a cor do triângulo como amarelo (R=1, G=1, B=0)
+    glColor3f(0, 0, 0)  # Define a cor do triângulo como preto (R=0, G=0, B=0)
     glVertex3f(0, 1, 0)  # Define o vértice superior
     glVertex3f(-1, -1, 0)  # Define o vértice inferior esquerdo
     glVertex3f(1, -1, 0)  # Define o vértice inferior direito
@@ -112,7 +112,7 @@ def main():
         pygame.time.wait(10)
 
         # Atualiza o ângulo de rotação para dar efeito de giro contínuo
-        r += 3  
+        r -= 10  
 
     pygame.quit()  # Finaliza o Pygame quando o loop termina
 
