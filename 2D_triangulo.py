@@ -59,9 +59,9 @@ def draw():
     # Inicia a definição do triângulo
     glBegin(GL_TRIANGLES)
     glColor3f(0, 0, 0)  # Define a cor do triângulo como preto (R=0, G=0, B=0)
-    glVertex3f(0, 1, 0)  # Define o vértice superior
-    glVertex3f(-1, -1, 0)  # Define o vértice inferior esquerdo
-    glVertex3f(1, -1, 0)  # Define o vértice inferior direito
+    glVertex3f(4, 5, 4)  # Define o vértice superior
+    glVertex3f(-5, -5, 4)  # Define o vértice inferior esquerdo
+    glVertex3f(5, -5, 4)  # Define o vértice inferior direito
     glEnd()  # Finaliza a definição do triângulo
 
 # Função principal do programa
