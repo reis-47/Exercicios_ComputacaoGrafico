@@ -5,14 +5,14 @@ from OpenGL.GLUT import *  # Importa GLUT para utilitários gráficos do OpenGL
 from OpenGL.GLU import *  # Importa GLU para operações gráficas auxiliares
 
 # Variáveis de posição do triângulo
-x = 7  # Alterado, Posição inicial no eixo X
-y = 3  # Alterado, Posição inicial no eixo Y
+x = 0  # Alterado, Posição inicial no eixo X
+y = 0  # Alterado, Posição inicial no eixo Y
 r = 0  # Ângulo de rotação do triângulo
 
 # Variáveis de escala (tamanho do triângulo)
-ex = 1  # Escala no eixo X
-ey = 1  # Escala no eixo Y
-ez = 1  # Escala no eixo Z (não afeta 2D)
+ex = 2  # Escala no eixo X
+ey = 2  # Escala no eixo Y
+ez = 2  # Escala no eixo Z (não afeta 2D)
 
 # Função de inicialização do OpenGL
 def init():
@@ -81,9 +81,9 @@ def main():
             if event.type == KEYDOWN:  # Se uma tecla for pressionada
                 if event.key == K_ESCAPE:  # Se a tecla ESC for pressionada
                     running = False  # Sai do loop e fecha o programa
-                if event.key == K_a:  # Se a tecla A for pressionada
+                if event.key == K_d:  # Se a tecla A for pressionada
                     x += -0.2  # Move o triângulo para a esquerda
-                if event.key == K_d:  # Se a tecla D for pressionada
+                if event.key == K_a:  # Se a tecla D for pressionada
                     x += 0.2  # Move o triângulo para a direita
                 if event.key == K_w:  # Se a tecla W for pressionada
                     y += 0.2  # Move o triângulo para cima
