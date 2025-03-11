@@ -1,0 +1,49 @@
+import matplotlib.pyplot as plt
+
+# Função que realiza a escala de um ponto manualmente
+def escala_manual(ponto, fator_escala):
+    novo_x = ponto[0] * fator_escala[0]
+    novo_y = ponto[1] * fator_escala[1]
+    return [novo_x, novo_y]
+
+# Função que recebe uma lista de pontos e os escala pelo mesmo fator
+def escalar_pontos(lista_pontos, fator_escala):
+    pontos_escalados = []
+    for ponto in lista_pontos:
+        ponto_escalado = escala_manual(ponto, fator_escala)
+        pontos_escalados.append(ponto_escalado)
+    return pontos_escalados
+
+# Definindo os pontos originais
+ponto1_original = [-1, -1]
+ponto2_original = [1, 1]
+lista_pontos_originais = [ponto1_original, ponto2_original]
+
+# Fator de escala
+fator_escala = [2, 2]
+
+# Escalando os pontos usando a função definida
+lista_pontos_escalados = escalar_pontos(lista_pontos_originais, fator_escala)
+
+# Configurando o gráfico
+plt.figure()
+
+# Plotando os pontos originais (em azul) conectados
+plt.plot([p[0] for p in lista_pontos_originais],
+         [p[1] for p in lista_pontos_originais],
+         'bo-', label='Pontos Originais')
+
+# Plotando os pontos escalados (em vermelho) conectados
+plt.plot([p[0] for p in lista_pontos_escalados],
+         [p[1] for p in lista_pontos_escalados],
+         'ro-', label='Pontos Escalados')
+
+# Configurações do gráfico
+plt.xlabel("Eixo X")
+plt.ylabel("Eixo Y")
+plt.title("Escalonamento de Pontos via Função")
+plt.legend()
+plt.grid(True)
+
+# Exibindo o gráfico
+plt.show()
