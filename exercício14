@@ -1,0 +1,58 @@
+#ifdef GL_ES
+precision mediump float;
+#endif
+
+// Uniforms
+uniform vec2 u_resolution;
+uniform float u_time;
+
+// Constante de PI
+#define PI 3.14159265358979323846
+
+// --- Funções utilitárias ---
+
+// Rotaciona um ponto 2D ao redor do centro (0.5, 0.5)
+vec2 rotate2D(vec2 st, float angle) {
+    st -= 0.5;
+    st = mat2(cos(angle), -sin(angle),
+              sin(angle),  cos(angle)) * st;
+    st += 0.5;
+    return st;
+}
+
+// Divide o espaço em uma grade, repetindo coordenadas
+vec2 tileSpace(vec2 st, float zoomFactor) {
+    st *= zoomFactor;
+    return fract(st);
+}
+
+// Desenha um quadrado com bordas suavizadas
+float drawSquare(vec2 st, vec2 size, float smoothEdges) {
+    vec2 halfSize = vec2(0.5) - size * 0.5;
+    vec2 edgeSmoothness = vec2(smoothEdges * 0.5);
+    vec2 uv = smoothstep(halfSize, halfSize + edgeSmoothness, st);
+    uv *= smoothstep(halfSize, halfSize + edgeSmoothness, vec2(1.0) - st);
+    return uv.x * uv.y;
+}
+
+// --- Função principal ---
+
+void main(void) {
+    // Coordenadas normalizadas [0.0, 1.0]
+    vec2 st = gl_FragCoord.xy / u_resolution;
+
+    // Divide o espaço em uma grade 4x4
+    vec2 tiledCoords = tileSpace(st, 4.0);
+
+    // Rotaciona cada quadrado da grade em 45 graus
+    vec2 rotatedCoords = rotate2D(tiledCoords, PI * 0.25);
+
+    // Desenha um quadrado central com bordas suaves
+    float shape = drawSquare(rotatedCoords, vec2(0.7), 0.01);
+
+    // Define a cor
+    vec3 color = vec3(shape);
+
+    // Saída final
+    gl_FragColor = vec4(color, 1.0);
+}
