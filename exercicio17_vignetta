@@ -1,0 +1,20 @@
+#ifdef GL_ES
+precision mediump float;
+#endif
+
+// Uniform
+uniform vec2 u_resolution;
+
+void main() {
+    // Coordenadas normalizadas [0.0, 1.0]
+    vec2 st = gl_FragCoord.xy / u_resolution;
+
+    // Distância do ponto ao centro da tela (0.5, 0.5)
+    float pct = distance(st, vec2(0.5));
+
+    // Cor em tons de cinza baseada na distância radial
+    vec3 color = vec3(pct);
+
+    // Saída final
+    gl_FragColor = vec4(color, 1.0);
+}
