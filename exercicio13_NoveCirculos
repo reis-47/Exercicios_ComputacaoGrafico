@@ -1,0 +1,25 @@
+#ifdef GL_ES
+precision mediump float;
+#endif
+
+// Resolução da tela
+uniform vec2 u_resolution;
+// Tempo (não utilizado, mas mantido para futura animação)
+uniform float u_time;
+
+void main() {
+    // Coordenadas normalizadas [0.0, 1.0]
+    vec2 st = gl_FragCoord.xy / u_resolution;
+
+    // Escala para criar uma grade 3x3
+    st *= 3.0;
+
+    // Parte fracionária: posição dentro de cada célula da grade
+    st = fract(st);
+
+    // Cor baseada na posição dentro da célula
+    vec3 color = vec3(st, 0.0); // R = x, G = y, B = 0
+
+    // Cor final
+    gl_FragColor = vec4(color, 1.0);
+}
