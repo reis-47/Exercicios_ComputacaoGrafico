@@ -1,0 +1,38 @@
+#ifdef GL_ES
+precision mediump float;
+#endif
+
+// Uniforms
+uniform vec2 u_resolution;
+
+// Constante
+#define PI 3.14159265358979323846
+
+// Função para traçar linhas suaves
+float plot(vec2 st, float pct) {
+    return smoothstep(pct - 0.01, pct, st.y) - 
+           smoothstep(pct, pct + 0.01, st.y);
+}
+
+void main() {
+    // Coordenadas normalizadas
+    vec2 st = gl_FragCoord.xy / u_resolution.xy;
+
+    // Cores base
+    vec3 colorA = vec3(0.149, 0.141, 0.912);
+    vec3 colorB = vec3(1.000, 0.833, 0.224);
+
+    // Inicializa a cor
+    vec3 color = vec3(0.0);
+
+    // Curvas de transição
+    vec3 pct = vec3(st.x);
+    pct.r = smoothstep(0.0, 1.0, st.x);
+    pct.g = sin(st.x * PI);
+    pct.b = pow(st.x, 0.5);
+
+    // Interpola entre as duas cores com base nas curvas
+    color = mix(colorA, colorB, pct);
+
+    // Marca as curvas com cores puras
+    color = mix(color, vec3(1.0, 0.0, 0.0), plot(st, pct.r)); // Vermelho
