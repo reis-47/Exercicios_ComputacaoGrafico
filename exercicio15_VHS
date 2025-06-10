@@ -1,0 +1,24 @@
+#ifdef GL_ES
+precision mediump float;
+#endif
+
+// Uniforms
+uniform vec2 u_resolution;
+uniform vec2 u_mouse;
+uniform float u_time;
+
+// Gera um número pseudoaleatório com base na posição e tempo
+float random(vec2 st) {
+    return fract(sin(dot(st, vec2(12.9898, 78.233)) + u_time) * 43758.5453123);
+}
+
+void main() {
+    // Coordenadas normalizadas [0.0, 1.0]
+    vec2 st = gl_FragCoord.xy / u_resolution;
+
+    // Geração de valor aleatório para o pixel, dependente do tempo
+    float rnd = random(st) * u_time;
+
+    // Cor final baseada no ruído aleatório
+    gl_FragColor = vec4(vec3(rnd), 1.0);
+}
