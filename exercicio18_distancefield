@@ -1,0 +1,32 @@
+#ifdef GL_ES
+precision mediump float;
+#endif
+
+// Uniforms
+uniform vec2 u_resolution;
+uniform vec2 u_mouse;
+uniform float u_time;
+
+void main() {
+    // Coordenadas normalizadas [0.0, 1.0]
+    vec2 st = gl_FragCoord.xy / u_resolution;
+
+    float pct = 0.0;
+
+    // Distâncias a dois pontos distintos
+    float d1 = distance(st, vec2(0.4));
+    float d2 = distance(st, vec2(0.6));
+
+    // Testes com diferentes operações entre as distâncias:
+    pct = d1 + d2;               // Soma
+    // pct = d1 * d2;            // Multiplicação
+    // pct = min(d1, d2);        // Mínimo
+    // pct = max(d1, d2);        // Máximo
+    // pct = pow(d1, d2);        // Potência
+
+    // Cor baseada no resultado
+    vec3 color = vec3(pct);
+
+    // Saída final
+    gl_FragColor = vec4(color, 1.0);
+}
